@@ -27,13 +27,32 @@
                 Console.WriteLine("Enter last name:");
                 string lastName = Console.ReadLine() ?? "";
 
-                Console.WriteLine("Enter employee id:");
-                int id = int.Parse(Console.ReadLine() ?? "0");
+                int id;
+                while (true)
+                {
+                    Console.WriteLine("Enter employee id:");
+                    if (int.TryParse(Console.ReadLine(), out id))
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid input. Please enter a valid integer for the employee id.");
+                    }
+                }
 
-                Console.WriteLine("Enter employee photo url:");
+                Console.WriteLine("Enter employee photo url (leave empty for placeholder):");
                 string photoUrl = Console.ReadLine() ?? "";
+                photoUrl = string.IsNullOrEmpty(photoUrl) ? "http://placekitten.com/400/400" : photoUrl;
                 Employee employee = new(firstName, lastName, id, photoUrl);
                 employees.Add(employee);
+
+                Console.WriteLine("Make another employee badge? (y/n):");
+                string answer = Console.ReadLine() ?? "";
+                if (answer.ToLower() != "y")
+                {
+                    break;
+                }
             }
 
             return employees;

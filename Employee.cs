@@ -29,5 +29,10 @@ namespace Peter.BadgeMaker
         {
             return PhotoUrl;
         }
+
+        public string GetCompanyName()
+        {
+            return "Petercorp";
+        }
     }
 }
