@@ -1,12 +1,13 @@
-﻿namespace CatWorx.BadgeMaker
+﻿namespace Peter.BadgeMaker
 {
     class Program
     {
-        public static void Main()
+        async static Task Main()
         {
             List<Employee> employees = GetEmployees();
             Util.PrintEmployees(employees);
             Util.MakeCSV(employees);
+            await Util.MakeBadges(employees);
         }
 
         private static List<Employee> GetEmployees()
